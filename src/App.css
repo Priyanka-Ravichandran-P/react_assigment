@@ -41,6 +41,7 @@
   padding: 0.313rem 0.313rem 0.313rem 0.313rem;
   border: 0.125rem solid black;
   position: relative;
+  height: 28rem;
 }
 
 .bottom-button {
@@ -54,4 +55,11 @@
 .second-half {
   flex: 3;
   padding: 1.25rem;
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%)
 }

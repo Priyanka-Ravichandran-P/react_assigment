@@ -7,7 +7,7 @@ const Chart: React.FC<ProductChartOfSelectedCategory> = (props) => {
     const { allProductsOfCategory, toRenderPieChart, categories } = props;
 
     return (
-        <div className='chart-container'>
+        <div>
             {toRenderPieChart ? <PieChart allCategories = {categories}/> : <ColumnChart allProductsOfCategory={allProductsOfCategory} />}
         </div>
     );

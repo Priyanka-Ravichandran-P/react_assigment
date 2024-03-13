@@ -40,6 +40,7 @@ export type ProductDashboardAllProduct = {
     setProductsOfSelectedCategory: (product: ProductType[]) => void,
     setCategories: (categories: string[]) => void,
     setPieChart: (flag: boolean) => void,
+    setSpinner: (flag: boolean) => void
 }
 
 export type ProductChartOfSelectedCategory = {

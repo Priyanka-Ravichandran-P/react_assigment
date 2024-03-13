@@ -8,7 +8,7 @@ import { useCategory } from "../hooks/useData";
 import axios from "axios";
 
 const Filters: React.FC<ProductDashboardAllProduct> = (props) => {
-    const { setProductsOfSelectedCategory, setCategories, setPieChart } = props;
+    const { setProductsOfSelectedCategory, setCategories, setPieChart, setSpinner } = props;
     const [category, setCategory] = useState<string>('');
     const [products, setProducts] = useState<string[]>([]);
     const [isBtnDisable, setBtnDisable] = useState<boolean>(true);
@@ -87,6 +87,7 @@ const Filters: React.FC<ProductDashboardAllProduct> = (props) => {
 
             <CustomizedButton btnClassName="bottom-button" btnLabel="Run Report" isDisabled={isBtnDisable}
                 onBtnClick={() => {
+                    setSpinner(true);
                     renderChartForCategory();
                     renderChartForProducts();
                 }} />
