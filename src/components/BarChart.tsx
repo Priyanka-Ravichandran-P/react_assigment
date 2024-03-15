@@ -1,10 +1,7 @@
 import React, { useEffect } from 'react';
 import Highcharts from 'highcharts';
 import { ProductType } from '../types/filterTypes';
-
-interface ColumnChartProps {
-  allProductsOfCategory: ProductType[];
-}
+import { ColumnChartProps } from '../types/ChartTypes';
 
 const ColumnChart: React.FC<ColumnChartProps> = ({ allProductsOfCategory }) => {
 

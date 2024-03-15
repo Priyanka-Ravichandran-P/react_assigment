@@ -43,22 +43,8 @@ export type ProductDashboardAllProduct = {
     setSpinner: (flag: boolean) => void
 }
 
-export type ProductChartOfSelectedCategory = {
-    allProductsOfCategory: ProductType[],
-    toRenderPieChart: boolean,
-    categories: string[]
-}
-
-export type PieChartProps = {
-    allCategories: string[]
-}
-
-export type PieChartInfoType = {
-    name: string,
-    y: number
-}
-
 export type CategoryMenuItem = {
     categoryMenuItem: string[],
     setCategoryMenuItem: (categories: string[]) => void
 }
+

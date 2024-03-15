@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import { PieChartProps, PieChartInfoType } from '../types/filterTypes';
+import { PieChartProps, PieChartInfoType } from '../types/ChartTypes';
 
 const PieChart: React.FC<PieChartProps> = (props) => {
   const { allCategories } = props;

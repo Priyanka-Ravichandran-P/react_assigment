@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import SingleSelectDropDown from "./SingleSelectDropdown";
 import CustomizedButton from "./Button";
-import { CategoryMenuItem, ProductDashboardAllProduct, ProductType } from "../types/filterTypes";
+import { ProductDashboardAllProduct, ProductType } from "../types/filterTypes";
 import MultiSelectDropDown from "./MultiSelectDropdown";
 import { useCategory } from "../hooks/useData";
 import axios from "axios";
@@ -12,9 +12,7 @@ const Filters: React.FC<ProductDashboardAllProduct> = (props) => {
     const [category, setCategory] = useState<string>('');
     const [products, setProducts] = useState<string[]>([]);
     const [isBtnDisable, setBtnDisable] = useState<boolean>(true);
-
     const [categoryMenuItem] = useCategory([]);
-
     const [productMenuItem, setProductMenuItem] = useState<string[]>([]);
     const [currentSelectedCategoryProducts, setcurrentSelectedCategoryProducts] = useState<ProductType[]>([]);
 
@@ -22,9 +20,9 @@ const Filters: React.FC<ProductDashboardAllProduct> = (props) => {
         setCategories(categoryMenuItem as string[]);
     }, [categoryMenuItem]);
 
-
     const fetchProduct = (category: string) => {
-        axios.get(`https://dummyjson.com/products/category/${category}`)
+        const _GET_PRODUCTS = 'https://dummyjson.com/products/category/';
+        axios.get(`${_GET_PRODUCTS}${category}`)
             .then(response => {
                 setcurrentSelectedCategoryProducts(response.data.products);
                 let products = response.data.products.map((product: ProductType) => product.title);
@@ -34,23 +32,6 @@ const Filters: React.FC<ProductDashboardAllProduct> = (props) => {
                 console.error('Error:', error);
             });
     }
-
-    const renderChartForCategory = () => {
-        if (category && products.length === 0) {
-            setProductsOfSelectedCategory(currentSelectedCategoryProducts);
-            setPieChart(false);
-        }
-
-    }
-    const renderChartForProducts = () => {
-        if (products.length > 0) {
-            let filteredProductArray = currentSelectedCategoryProducts.filter(product => products.includes(product.title));
-            setProductsOfSelectedCategory(filteredProductArray);
-            setPieChart(false);
-        }
-
-    }
-
     const reset = () => {
         setCategory('');
         setProducts([]);
@@ -63,8 +44,19 @@ const Filters: React.FC<ProductDashboardAllProduct> = (props) => {
     const onChangeOfCategory = (value: string) => {
         setCategory(value);
         setProducts([]);
-        fetchProduct(value);
+        fetchProduct(value)
         setBtnDisable(false)
+    }
+
+    const renderChart = () => {
+        if (category && products.length === 0) {
+            setProductsOfSelectedCategory(currentSelectedCategoryProducts);
+        }
+        if (products.length > 0) {
+            let filteredProductArray = currentSelectedCategoryProducts.filter(product => products.includes(product.title));
+            setProductsOfSelectedCategory(filteredProductArray);
+        }
+        setPieChart(false);
     }
 
     return (
@@ -88,8 +80,7 @@ const Filters: React.FC<ProductDashboardAllProduct> = (props) => {
             <CustomizedButton btnClassName="bottom-button" btnLabel="Run Report" isDisabled={isBtnDisable}
                 onBtnClick={() => {
                     setSpinner(true);
-                    renderChartForCategory();
-                    renderChartForProducts();
+                    renderChart();
                 }} />
         </div>
     )

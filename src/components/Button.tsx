@@ -5,12 +5,9 @@ import { FilterBtnProp } from "../types/filterTypes";
 const CustomizedButton: React.FC<FilterBtnProp> = (props) => {
     const { btnClassName, btnLabel, isDisabled, onBtnClick } = props;
 
-    const handleBtnClick = () => {
-        onBtnClick();
-    }
     return (
         <div className={` ${btnClassName || ''}`}>
-            <Button disabled={isDisabled} variant="contained" onClick={handleBtnClick}>{btnLabel}</Button>
+            <Button disabled={isDisabled} variant="contained" onClick={() => onBtnClick()}>{btnLabel}</Button>
         </div>
     )
 }

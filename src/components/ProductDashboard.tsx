@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Filters from "./Filters";
 import Chart from "./Chart";
 import { ProductType } from "../types/filterTypes";
@@ -6,18 +6,9 @@ import { CircularProgress } from "@mui/material";
 
 const ProductDashboard: React.FC = () => {
   const [renderPieChart, setRenderPieChart] = useState<boolean>(true);
-  const [isLoaderSet, setLoader] = useState<boolean>(true);
+  const [isLoaderSet, setLoader] = useState<boolean>(false);
   const [allCategories, setAllCategories] = useState<string[]>([]);
   const [allproductsOfSelectedCategory, setAllProductsOfSelectedCategory] = useState<ProductType[]>([]);
-
-  useEffect(() => {
-    const loaderTimeout = setTimeout(() => {
-      setLoader(false); 
-    }, 1000);
-
-    // Clean up the timeout to avoid memory leaks
-    return () => clearTimeout(loaderTimeout);
-  }, []);
 
   return (
     <div className="container">
