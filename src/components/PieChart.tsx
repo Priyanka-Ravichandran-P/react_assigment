@@ -6,13 +6,7 @@ import { PieChartProps, PieChartInfoType } from '../types/ChartTypes';
 
 const PieChart: React.FC<PieChartProps> = (props) => {
   const { allCategories } = props;
-  const [pieChartData, setPieChartData] = useState<PieChartInfoType[]>([{ name: "", y: 1 }]);
-
-
-  useEffect(() => {
-    const categories: PieChartInfoType[] = allCategories.map(category => { return { name: category, y: 1 } });
-    setPieChartData(categories);
-  }, [allCategories]);
+  const categories: PieChartInfoType[] = allCategories.map(category => { return { name: category, y: 1 } });
 
   const options = {
     chart: {
@@ -23,7 +17,7 @@ const PieChart: React.FC<PieChartProps> = (props) => {
     },
     series: [{
       name: 'Categories',
-      data: pieChartData,
+      data: categories,
     }],
   };
 

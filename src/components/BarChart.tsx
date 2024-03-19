@@ -8,10 +8,7 @@ const ColumnChart: React.FC<ColumnChartProps> = ({ allProductsOfCategory }) => {
     const categories = allProductsOfCategory.map((product : ProductType) => product.title);
     const prices = allProductsOfCategory.map((product : ProductType) => product.price);
     const YAxisTitle = allProductsOfCategory[0]?.category || 'Category';
-
-
-  useEffect(() => {
-    const options: Highcharts.Options = {
+const options: Highcharts.Options = {
       chart: {
         type: 'column',
       },
@@ -34,6 +31,7 @@ const ColumnChart: React.FC<ColumnChartProps> = ({ allProductsOfCategory }) => {
       ] as Highcharts.SeriesOptionsType[],
     };
 
+  useEffect(() => {
     // Create the column bar chart
     Highcharts.chart('columnChartContainer', options);
   }, [categories, prices]);

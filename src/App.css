@@ -70,9 +70,6 @@
 
 
 @media only screen and (max-width: 1310px) {
-  body {
-    background-color: gray;
-  }
 
   .container {
     display: flex;
