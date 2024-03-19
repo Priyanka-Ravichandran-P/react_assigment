@@ -40,10 +40,12 @@
 .first-half {
   flex: 1;
   padding: 0.313rem 0.313rem 0.313rem 0.313rem;
-  border: 0.125rem solid black;
+  border-radius: 5%;
+  border-style: groove;
+  background-color: whitesmoke;
   position: relative;
   height: 28rem;
-  
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .bottom-button {
@@ -57,7 +59,12 @@
 .second-half {
   flex: 3;
   padding: 1.25rem;
+  background-color: whitesmoke;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  
 }
+  
+
 
 .loader {
   position: absolute;
