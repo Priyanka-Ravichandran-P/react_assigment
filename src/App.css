@@ -34,6 +34,7 @@
 .container {
   display: flex;
   margin: 5rem 1.25rem 1.25rem 1.25rem;
+  background-color:white;
 }
 
 .first-half {
@@ -42,6 +43,7 @@
   border: 0.125rem solid black;
   position: relative;
   height: 28rem;
+  
 }
 
 .bottom-button {
@@ -62,4 +64,25 @@
   top: 50%;
   left: 60%;
   transform: translate(-50%, -50%)
+}
+
+
+
+
+@media only screen and (max-width: 1310px) {
+  body {
+    background-color: gray;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .bottom-button {
+    position: static;
+    margin-left: 50%; 
+  }
+  
 }
