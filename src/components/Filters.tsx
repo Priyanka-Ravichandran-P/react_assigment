@@ -1,24 +1,20 @@
 import { Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import SingleSelectDropDown from "./SingleSelectDropdown";
 import CustomizedButton from "./Button";
 import { ProductDashboardAllProduct, ProductType } from "../types/filterTypes";
 import MultiSelectDropDown from "./MultiSelectDropdown";
-import { useCategory } from "../hooks/useData";
 import axios from "axios";
+import { useCategory } from "../hooks/useData";
 
 const Filters: React.FC<ProductDashboardAllProduct> = (props) => {
     const { setProductsOfSelectedCategory, setCategories, setPieChart, setSpinner } = props;
     const [category, setCategory] = useState<string>('');
     const [products, setProducts] = useState<string[]>([]);
     const [isBtnDisable, setBtnDisable] = useState<boolean>(true);
-    const [categoryMenuItem] = useCategory([]);
+    const[categoryMenuItem] = useCategory([], setCategories);
     const [productMenuItem, setProductMenuItem] = useState<string[]>([]);
     const [currentSelectedCategoryProducts, setcurrentSelectedCategoryProducts] = useState<ProductType[]>([]);
-
-    useEffect(() => {
-        setCategories(categoryMenuItem as string[]);
-    }, [categoryMenuItem]);
 
     const fetchProduct = (category: string) => {
         const _GET_PRODUCTS = 'https://dummyjson.com/products/category/';
@@ -32,6 +28,7 @@ const Filters: React.FC<ProductDashboardAllProduct> = (props) => {
                 console.error('Error:', error);
             });
     }
+
     const reset = () => {
         setCategory('');
         setProducts([]);
