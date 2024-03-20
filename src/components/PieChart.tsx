@@ -1,5 +1,5 @@
 // Import necessary libraries
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { PieChartProps, PieChartInfoType } from '../types/ChartTypes';
