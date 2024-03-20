@@ -64,29 +64,9 @@
   
 }
   
-
-
 .loader {
   position: absolute;
   top: 50%;
   left: 60%;
   transform: translate(-50%, -50%)
-}
-
-
-
-
-@media only screen and (max-width: 1310px) {
-
-  .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .bottom-button {
-    position: static;
-    margin-left: 50%; 
-  }
-  
 }
